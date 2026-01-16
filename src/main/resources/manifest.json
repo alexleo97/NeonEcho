@@ -1,19 +1,22 @@
 {
-  "Group": "TemplatePlugin",
-  "Name": "TemplatePlugin",
-  "Version": "1.0.0",
-  "Description": "A Hytale plugin template",
-  "Authors": [
-    {
-      "Name": "YourName",
-      "Email": "your.email@example.com",
-      "Url": "https://your-website.com"
-    }
-  ],
-  "Website": "https://github.com/yourusername/hytale-plugin-template",
-  "Main": "com.example.templateplugin.TemplatePlugin",
-  "ServerVersion": "*",
-  "Dependencies": {},
-  "OptionalDependencies": {},
-  "DisabledByDefault": false
+    "Group": "Example",
+    "Name": "ExamplePlugin",
+    "Version": "0.0.2",
+    "Description": "An example plugin for HyTale!",
+    "Authors": [
+        {
+            "Name": "It's you!"
+        }
+    ],
+    "Website": "example.org",
+    "ServerVersion": "*",
+    "Dependencies": {
+        
+    },
+    "OptionalDependencies": {
+        
+    },
+    "DisabledByDefault": false,
+    "Main": "org.example.plugin.ExamplePlugin",
+    "IncludesAssetPack": true
 }
