@@ -1,46 +1,47 @@
-# NeonEcho
+# NEON ECHO // HYTALE MOD
+Low-noise startup mod with a neon-skinned vibe. It prints a welcome line on join and exposes a `/netrun` command for a quick status readout.
 
-NeonEcho is a small cyberpunk-themed Hytale plugin. It shows a welcome message on join and adds a `/netrun` command for a quick flavor status check.
+---
 
-## Features
+## SIGNALS
 
-- Welcome message when you join a world.
-- `/netrun` command that prints a short status readout.
+- Neon welcome on join.
+- `/netrun` command with a short flavor status.
 
-## Requirements
+## RUNTIME
 
 - Hytale installed via the launcher.
 - Java 25 for building.
 
-## Build
+## BUILD
 
 ```sh
 ./gradlew build
 ```
 
-Output jar:
+Output:
 
 ```
 build/libs/NeonEcho-0.0.2.jar
 ```
 
-## Install (singleplayer)
+## INSTALL (SINGLEPLAYER)
 
-1. Copy the jar into your Mods folder.
+1. Drop the jar into your Mods folder.
 2. Restart Hytale (mods load on startup).
 3. Join your world and run `/netrun`.
 
-macOS Mods folder:
+macOS Mods path:
 
 ```
 ~/Library/Application Support/HytaleF2P/release/package/game/latest/Client/UserData/Mods
 ```
 
-## Development notes
+## DEV NOTES
 
-- If your Hytale install is in a custom location, set `hytale_home` in `gradle.properties` or pass `-Phytale_home=...` to Gradle.
-- The plugin entrypoint is `com.alexleo.neonecho.NeonEchoPlugin`.
+- If Hytale lives elsewhere, set `hytale_home` in `gradle.properties` or pass `-Phytale_home=...` to Gradle.
+- Entrypoint: `com.alexleo.neonecho.NeonEchoPlugin`
 
-## License
+## LICENSE
 
-MIT (update if you want something else).
+MIT (swap if you want a different one).
