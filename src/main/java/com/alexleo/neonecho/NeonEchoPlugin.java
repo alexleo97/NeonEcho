@@ -15,18 +15,25 @@ import javax.annotation.Nonnull;
 public class NeonEchoPlugin extends JavaPlugin {
 
     private static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
+    private final NeonEchoState state;
 
     public NeonEchoPlugin(@Nonnull JavaPluginInit init) {
         super(init);
+        this.state = new NeonEchoState(this.getName(), this.getManifest().getVersion().toString());
         LOGGER.atInfo().log("Hello from " + this.getName() + " version " + this.getManifest().getVersion().toString());
     }
 
     @Override
     protected void setup() {
         LOGGER.atInfo().log("Setting up plugin " + this.getName());
-        this.getCommandRegistry().registerCommand(new NetrunCommand(this.getName(), this.getManifest().getVersion().toString()));
+        this.getCommandRegistry().registerCommand(new NetrunCommand(state));
+        this.getCommandRegistry().registerCommand(new NeonHelpCommand());
+        this.getCommandRegistry().registerCommand(new NeonStatusCommand(state));
+        this.getCommandRegistry().registerCommand(new NeonMuteCommand(state));
         this.getEventRegistry().register(PlayerConnectEvent.class, event -> {
-            event.getPlayer().sendMessage(Message.raw("NeonEcho online. Welcome back, runner. Type /netrun to sync."));
+            if (!state.isMuted(event.getPlayerRef().getUuid())) {
+                event.getPlayer().sendMessage(Message.raw("NeonEcho online. Welcome back, runner. Type /netrun to sync."));
+            }
         });
     }
 }

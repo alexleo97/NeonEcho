@@ -7,6 +7,7 @@ Low-noise startup mod with a neon-skinned vibe. It prints a welcome line on join
 
 - Neon welcome on join.
 - `/netrun` command with a short flavor status.
+- `/neonhelp`, `/neonstatus`, and `/neonmute` helpers.
 
 ## RUNTIME
 
