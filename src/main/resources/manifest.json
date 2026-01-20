@@ -1,14 +1,14 @@
 {
-    "Group": "Example",
-    "Name": "ExamplePlugin",
+    "Group": "NeonEcho",
+    "Name": "NeonEcho",
     "Version": "0.0.2",
-    "Description": "An example plugin for HyTale!",
+    "Description": "Neon-themed welcome + netrun command.",
     "Authors": [
         {
-            "Name": "It's you!"
+            "Name": "alexleo"
         }
     ],
-    "Website": "example.org",
+    "Website": "neonecho.local",
     "ServerVersion": "*",
     "Dependencies": {
         
@@ -17,6 +17,6 @@
         
     },
     "DisabledByDefault": false,
-    "Main": "org.example.plugin.ExamplePlugin",
+    "Main": "com.alexleo.neonecho.NeonEchoPlugin",
     "IncludesAssetPack": true
 }
