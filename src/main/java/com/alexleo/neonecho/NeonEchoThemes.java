@@ -16,12 +16,12 @@ public final class NeonEchoThemes {
                 "[NeonEcho]",
                 "NeonEcho online. Welcome back, runner. Type /netrun to sync.",
                 List.of(
-                        "Netrun handshake ready. Tier {tier}. Code {code}.",
-                        "Type /netrun {code} within {seconds}s to breach."
+                        "Netrun handshake ready. Tier {tier} | Risk {risk}.",
+                        "Stage {stage}/{stages}. Code {code}. {seconds}s to breach."
                 ),
                 List.of(
                         "Breach confirmed. Cred injected: +{cred}.",
-                        "Tier {tier} streak {streak}.",
+                        "Tier {tier} | Risk {risk}. Streak {streak}.",
                         "Trace cooled. Cooldown {cooldown}s."
                 ),
                 List.of(
@@ -32,7 +32,7 @@ public final class NeonEchoThemes {
                         "Netrun rig cooling. {cooldown}s remaining."
                 ),
                 List.of(
-                        "Active netrun detected. Code {code}, {seconds}s left."
+                        "Active netrun detected. Stage {stage}/{stages}. Code {code}, {seconds}s left."
                 )
         ));
         themes.put("chrome", new NeonEchoTheme(
@@ -40,12 +40,12 @@ public final class NeonEchoThemes {
                 "[NeonEcho//Chrome]",
                 "Chrome deck synced. Type /netrun to jack in.",
                 List.of(
-                        "Chrome handshake ready. Tier {tier}. Code {code}.",
-                        "Run /netrun {code} within {seconds}s."
+                        "Chrome handshake ready. Tier {tier} | Risk {risk}.",
+                        "Stage {stage}/{stages}. Run /netrun {code} within {seconds}s."
                 ),
                 List.of(
                         "Access granted. Cred payout: +{cred}.",
-                        "Tier {tier} streak {streak}.",
+                        "Tier {tier} | Risk {risk}. Streak {streak}.",
                         "Cooldown engaged: {cooldown}s."
                 ),
                 List.of(
@@ -56,7 +56,7 @@ public final class NeonEchoThemes {
                         "Deck cooling. {cooldown}s remaining."
                 ),
                 List.of(
-                        "Chrome netrun active. Code {code}, {seconds}s left."
+                        "Chrome netrun active. Stage {stage}/{stages}. Code {code}, {seconds}s left."
                 )
         ));
         themes.put("ghost", new NeonEchoTheme(
@@ -64,12 +64,12 @@ public final class NeonEchoThemes {
                 "[NeonEcho.GHOST]",
                 "Ghost channel active. Type /netrun to breach.",
                 List.of(
-                        "Ghost line open. Tier {tier}. Code {code}.",
-                        "Type /netrun {code} within {seconds}s."
+                        "Ghost line open. Tier {tier} | Risk {risk}.",
+                        "Stage {stage}/{stages}. Type /netrun {code} within {seconds}s."
                 ),
                 List.of(
                         "Ghost breach complete. Cred +{cred}.",
-                        "Tier {tier} streak {streak}.",
+                        "Tier {tier} | Risk {risk}. Streak {streak}.",
                         "Shadows reset in {cooldown}s."
                 ),
                 List.of(
@@ -80,7 +80,7 @@ public final class NeonEchoThemes {
                         "Ghost deck cooling. {cooldown}s left."
                 ),
                 List.of(
-                        "Ghost netrun active. Code {code}, {seconds}s left."
+                        "Ghost netrun active. Stage {stage}/{stages}. Code {code}, {seconds}s left."
                 )
         ));
         THEMES = Collections.unmodifiableMap(themes);

@@ -14,6 +14,8 @@ public final class NeonEchoData {
     public Map<String, Integer> dailyNetrunWins = new ConcurrentHashMap<>();
     public Map<String, Integer> dailyOnlineSeconds = new ConcurrentHashMap<>();
     public Map<String, NeonDailyContract> dailyContracts = new ConcurrentHashMap<>();
+    public Map<String, NeonPerkLoadout> perkLoadouts = new ConcurrentHashMap<>();
+    public Map<String, NeonEventState> eventStates = new ConcurrentHashMap<>();
 
     public void normalize() {
         if (cred == null) {
@@ -46,6 +48,17 @@ public final class NeonEchoData {
         if (dailyContracts == null) {
             dailyContracts = new ConcurrentHashMap<>();
         }
+        if (perkLoadouts == null) {
+            perkLoadouts = new ConcurrentHashMap<>();
+        }
+        if (eventStates == null) {
+            eventStates = new ConcurrentHashMap<>();
+        }
+        for (NeonPerkLoadout loadout : perkLoadouts.values()) {
+            if (loadout != null) {
+                loadout.normalize();
+            }
+        }
     }
 
     public NeonEchoData copy() {
@@ -60,6 +73,14 @@ public final class NeonEchoData {
         copy.dailyNetrunWins.putAll(dailyNetrunWins);
         copy.dailyOnlineSeconds.putAll(dailyOnlineSeconds);
         copy.dailyContracts.putAll(dailyContracts);
+        for (Map.Entry<String, NeonPerkLoadout> entry : perkLoadouts.entrySet()) {
+            NeonPerkLoadout loadout = entry.getValue();
+            copy.perkLoadouts.put(entry.getKey(), loadout != null ? loadout.copy() : null);
+        }
+        for (Map.Entry<String, NeonEventState> entry : eventStates.entrySet()) {
+            NeonEventState eventState = entry.getValue();
+            copy.eventStates.put(entry.getKey(), eventState != null ? eventState.copy() : null);
+        }
         return copy;
     }
 }

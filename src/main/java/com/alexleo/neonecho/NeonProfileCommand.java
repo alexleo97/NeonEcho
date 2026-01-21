@@ -42,11 +42,25 @@ public class NeonProfileCommand extends CommandBase {
         String title = state.getTitleForCred(cred);
         NeonEchoState.NetrunStats stats = state.getNetrunStats(target.getUuid());
         NeonEchoState.DailyContractView daily = state.getDailyContractView(target.getUuid());
+        String perksLine = String.join(", ", state.getActivePerks(target.getUuid()));
+        NeonEventState event = state.getActiveEvent(target.getUuid());
 
         ctx.sendMessage(Message.raw(state.formatMessage("Profile for " + target.getUsername() + ":")));
         ctx.sendMessage(Message.raw(state.formatMessage("Street Cred " + cred + ". Title: " + title + ".")));
         ctx.sendMessage(Message.raw(state.formatMessage("Netrun wins " + stats.wins() + ", fails " + stats.fails()
                 + ", streak " + stats.streak() + " (best " + stats.bestStreak() + ").")));
+        if (!perksLine.isBlank()) {
+            ctx.sendMessage(Message.raw(state.formatMessage("Active perks: " + perksLine + ".")));
+        }
+        else if (state.isPerksEnabled()) {
+            ctx.sendMessage(Message.raw(state.formatMessage("Active perks: none.")));
+        }
+        if (event != null) {
+            long secondsLeft = event.expiresAt != null
+                    ? Math.max(0L, (event.expiresAt - System.currentTimeMillis()) / 1000L)
+                    : 0L;
+            ctx.sendMessage(Message.raw(state.formatMessage("Active alert: " + event.name + " (" + secondsLeft + "s).")));
+        }
         if (!daily.enabled()) {
             ctx.sendMessage(Message.raw(state.formatMessage("Daily contracts disabled.")));
         }

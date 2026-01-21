@@ -2,7 +2,7 @@
   <img src="assets/neonecho-banner.png" alt="NeonEcho banner" width="720">
 </p>
 <p align="center">
-  <a href="https://github.com/alexleo97/NeonEcho"><img alt="Version" src="https://img.shields.io/badge/version-0.0.3-00e5ff?labelColor=0b0b16&color=00e5ff"></a>
+  <a href="https://github.com/alexleo97/NeonEcho"><img alt="Version" src="https://img.shields.io/badge/version-0.0.5-00e5ff?labelColor=0b0b16&color=00e5ff"></a>
   <a href="https://github.com/alexleo97/NeonEcho/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/alexleo97/NeonEcho?style=flat&color=ff3fb3&labelColor=0b0b16"></a>
   <a href="https://github.com/alexleo97/NeonEcho/issues"><img alt="Issues" src="https://img.shields.io/github/issues/alexleo97/NeonEcho?style=flat&color=7cff6b&labelColor=0b0b16"></a>
   <a href="https://github.com/alexleo97/NeonEcho/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/alexleo97/NeonEcho?style=flat&color=c8ff00&labelColor=0b0b16"></a>
@@ -17,15 +17,21 @@ NeonEcho turns your world into a low-noise cyberpunk playground: netruns, Street
 ## FEATURE CARDS ⚡
 | NETRUNS ⚡ | STREET CRED 💾 |
 | --- | --- |
-| Tiered hacks, cooldowns, streaks, and payouts. | Earned by play, tied to ranks and titles. |
-| CYBER ASSETS 💡 | DAILY CONTRACTS 🧾 |
-| Glowing panels, holo lamps, neon signage. | Daily objectives with claimable cred rewards. |
+| Multi-stage hacks, risk profiles, cooldown mods. | Earned by play, tied to ranks, perks, and titles. |
+| NEON PERKS 🧠 | NEON ALERTS 🚨 |
+| Vendor loadouts that tweak netruns. | Random events, drops, and bonus runs. |
+| NEON DISTRICT KIT 💡 | AMBIENT ZONES 🫧 |
+| Panels, tiles, neon glass, billboards, street lamps. | Beacon nodes with glow + ambient hum. |
 
 ## WHAT IT FEELS LIKE 🌆
-- Netrun challenges with tiers, cooldowns, and streaks.
+- Multi-stage netruns with tier + risk profiles.
 - Street Cred that grows with play and unlocks titles.
 - Daily contracts that hand out bonus cred.
-- Cyberpunk props: glowing panels, holo lamps, and danger signs.
+- Perk vendor loadouts that alter netrun rewards and cooldowns.
+- Cyberpunk props: chrome panels, circuit tiles, neon glass, and street lamps.
+- Neon signage: billboards and arrow signs for wayfinding.
+- Ambient beacons that add glow + subtle zone audio.
+- Neon alerts with timed bonuses and claimable drops.
 
 ## QUICK START (SINGLEPLAYER) ⚙️
 1. Drop the jar into your Mods folder.
@@ -38,12 +44,15 @@ macOS Mods path:
 ```
 
 ## COMMANDS 🎛️
-- `/netrun` or `/netrun <tier>`: start or complete a netrun.
+- `/netrun` or `/netrun <tier> [risk]`: start or complete a netrun.
 - `/netrunstats`: wins, fails, streaks.
 - `/cred`: your Street Cred.
 - `/credtop`: leaderboard.
 - `/credset`: admin cred override.
 - `/neonprofile`: full runner profile.
+- `/neonperks`: perk loadout + vendor shop.
+- `/neonalert`: active neon events.
+- `/neondrop`: claim event drops.
 - `/contracts`: daily objectives.
 - `/claim`: collect daily reward.
 - `/neonstatus`: plugin status.
@@ -54,8 +63,15 @@ macOS Mods path:
 All assets are in the NeonEcho asset pack, so they show up in Creative search.
 - `NeonEcho_Datachip`: craftable ingredient (Prisma + cyan crystal).
 - `NeonEcho_NeonPanel`: glowing cyan panel block.
+- `NeonEcho_ChromePanel`: chrome panel block.
+- `NeonEcho_CircuitTile`: glossy circuit tile.
+- `NeonEcho_NeonGlass`: purple neon glass block.
 - `NeonEcho_HoloLamp`: hologlow lamp with particles.
 - `NeonEcho_DangerSign`: neon wall sign.
+- `NeonEcho_NeonBillboard`: neon billboard sign.
+- `NeonEcho_NeonArrowSign`: neon arrow sign.
+- `NeonEcho_NeonStreetLamp`: street lamp fixture.
+- `NeonEcho_NeonBeacon`: ambient beacon node.
 
 ## STREET CRED 💾
 - Earned from chat + time online (configurable).
@@ -66,7 +82,19 @@ All assets are in the NeonEcho asset pack, so they show up in Creative search.
 ## NETRUN TIERS 🛰️
 - Defaults: `easy`, `medium`, `hard`.
 - Each tier has its own code length, timer, attempts, reward, and cooldown.
+- Multi-stage runs ramp the difficulty per stage.
+- Risk profiles tweak reward, cooldown, and timers.
 - Streaks tracked across sessions.
+
+## PERKS + VENDOR 🧠
+- `/neonperks` lists perks, ranks, and costs.
+- Perks can reduce cooldowns, add attempts, or boost payouts.
+- Equip loadouts within perk slot limits.
+
+## NEON ALERTS 🚨
+- Random events roll while you are online.
+- `/neonalert` shows the active alert and time left.
+- `/neondrop` claims timed drop rewards.
 
 ## DAILY CONTRACTS 🧾
 - Daily objectives refresh each day.
@@ -83,9 +111,9 @@ All assets are in the NeonEcho asset pack, so they show up in Creative search.
 - [x] Street Cred ranks and runner profiles.
 - [x] Daily contracts with claimable rewards.
 - [x] Neon asset pack with craftable props.
-- [ ] Custom cyberpunk texture set (panels, decals, signage).
-- [ ] Prefab-ready neon district props and lighting kit.
-- [ ] Ambient soundscape + particle pass for neon zones.
+- [x] Custom cyberpunk texture set (panels, decals, signage).
+- [x] Prefab-ready neon district props and lighting kit.
+- [x] Ambient soundscape + particle pass for neon zones.
 
 ## BUILD 🛠️
 ```sh
@@ -94,7 +122,7 @@ All assets are in the NeonEcho asset pack, so they show up in Creative search.
 
 Output:
 ```
-build/libs/NeonEcho-0.0.3.jar
+build/libs/NeonEcho-0.0.5.jar
 ```
 
 ## DEV NOTES 🧪

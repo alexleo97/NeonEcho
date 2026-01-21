@@ -1,0 +1,70 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.NeonEcho_ChromePanel.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Soil_Clay_Smooth_Grey.png",
+  "Categories": [
+    "Blocks.Deco"
+  ],
+  "PlayerAnimationsId": "Block",
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Opacity": "Opaque",
+    "HitboxType": "Full",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Rocks"
+      }
+    },
+    "BlockParticleSetId": "Metal",
+    "Textures": [
+      {
+        "Sides": "BlockTextures/Clay_Smooth_Grey.png",
+        "UpDown": "BlockTextures/Clay_Smooth_Black.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#1b1f2b",
+    "BlockSoundSetId": "Metal",
+    "CubeShadingMode": "Reflective",
+    "Light": {
+      "Color": "#10f3ff",
+      "Radius": 0
+    },
+    "VariantRotation": "Pipe"
+  },
+  "Tags": {
+    "Type": [
+      "Deco"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "NeonEcho_Datachip",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Crystal_Cyan",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Decorative"
+        ]
+      }
+    ],
+    "OutputQuantity": 4
+  }
+}

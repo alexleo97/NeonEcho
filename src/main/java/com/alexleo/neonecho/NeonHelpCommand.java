@@ -20,7 +20,7 @@ public class NeonHelpCommand extends CommandBase {
     @Override
     protected void executeSync(@Nonnull CommandContext ctx) {
         ctx.sendMessage(Message.raw(state.formatMessage("Commands:")));
-        ctx.sendMessage(Message.raw(state.formatMessage("/netrun - start or complete a netrun")));
+        ctx.sendMessage(Message.raw(state.formatMessage("/netrun [tier] [risk] - start or complete a netrun")));
         ctx.sendMessage(Message.raw(state.formatMessage("/netrunstats - netrun stats")));
         ctx.sendMessage(Message.raw(state.formatMessage("/neonstatus - version + uptime")));
         ctx.sendMessage(Message.raw(state.formatMessage("/neonmute - toggle join message")));
@@ -28,6 +28,9 @@ public class NeonHelpCommand extends CommandBase {
         ctx.sendMessage(Message.raw(state.formatMessage("/credtop - top Street Cred")));
         ctx.sendMessage(Message.raw(state.formatMessage("/credset - set Street Cred (admin)")));
         ctx.sendMessage(Message.raw(state.formatMessage("/neonprofile - runner profile")));
+        ctx.sendMessage(Message.raw(state.formatMessage("/neonperks - perk loadout + vendor")));
+        ctx.sendMessage(Message.raw(state.formatMessage("/neonalert - active neon events")));
+        ctx.sendMessage(Message.raw(state.formatMessage("/neondrop - claim event drops")));
         ctx.sendMessage(Message.raw(state.formatMessage("/contracts - daily objectives")));
         ctx.sendMessage(Message.raw(state.formatMessage("/claim - claim daily reward")));
         ctx.sendMessage(Message.raw(state.formatMessage("/neonreload - reload config (admin)")));

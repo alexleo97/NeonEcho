@@ -1,0 +1,66 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.NeonEcho_NeonGlass.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Crystal_Purple.png",
+  "Categories": [
+    "Blocks.Deco"
+  ],
+  "PlayerAnimationsId": "Block",
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Opacity": "Transparent",
+    "HitboxType": "Full",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Rocks"
+      }
+    },
+    "BlockParticleSetId": "Crystal",
+    "Textures": [
+      {
+        "Sides": "BlockTextures/Rock_Crystal_Purple.png",
+        "UpDown": "BlockTextures/Rock_Crystal_Purple_Top.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#b14bff",
+    "BlockSoundSetId": "Crystal",
+    "CubeShadingMode": "Reflective",
+    "Light": {
+      "Color": "#b14bff",
+      "Radius": 0
+    },
+    "VariantRotation": "Pipe"
+  },
+  "Tags": {
+    "Type": [
+      "Deco"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "NeonEcho_Datachip",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Crystal_Purple",
+        "Quantity": 4
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Decorative"
+        ]
+      }
+    ],
+    "OutputQuantity": 4
+  }
+}

@@ -56,9 +56,12 @@ public class NeonEchoPlugin extends JavaPlugin {
         this.getCommandRegistry().registerCommand(new NeonProfileCommand(state));
         this.getCommandRegistry().registerCommand(new NeonContractsCommand(state));
         this.getCommandRegistry().registerCommand(new NeonClaimCommand(state));
+        this.getCommandRegistry().registerCommand(new NeonPerksCommand(state));
+        this.getCommandRegistry().registerCommand(new NeonAlertCommand(state));
+        this.getCommandRegistry().registerCommand(new NeonDropCommand(state));
         this.getCommandRegistry().registerCommand(new NeonReloadCommand(state));
         this.getEventRegistry().register(PlayerConnectEvent.class, event -> {
-            state.markOnline(event.getPlayerRef().getUuid(), true);
+            state.markOnline(event.getPlayerRef(), true);
             state.recordPlayerName(event.getPlayerRef().getUuid(), event.getPlayerRef().getUsername());
             state.prepareDaily(event.getPlayerRef().getUuid());
             if (!state.isMuted(event.getPlayerRef().getUuid())) {
@@ -72,7 +75,7 @@ public class NeonEchoPlugin extends JavaPlugin {
             }
         });
         this.getEventRegistry().register(PlayerDisconnectEvent.class, event -> {
-            state.markOnline(event.getPlayerRef().getUuid(), false);
+            state.markOnline(event.getPlayerRef(), false);
         });
         this.getEventRegistry().registerAsyncGlobal(PlayerChatEvent.class, future -> future.thenApply(event -> {
             if (event == null || event.getSender() == null) {
@@ -106,6 +109,16 @@ public class NeonEchoPlugin extends JavaPlugin {
             }
         }, 60, 60, TimeUnit.SECONDS);
         registerTask(saveFuture);
+
+        ScheduledFuture<?> eventFuture = scheduler.scheduleAtFixedRate(() -> {
+            try {
+                state.tickEvents();
+            }
+            catch (Exception ex) {
+                LOGGER.at(Level.WARNING).log("NeonEcho events tick failed: " + ex.getMessage());
+            }
+        }, 60, 60, TimeUnit.SECONDS);
+        registerTask(eventFuture);
     }
 
     @SuppressWarnings("unchecked")

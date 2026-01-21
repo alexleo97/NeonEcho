@@ -20,13 +20,15 @@ import java.util.concurrent.ThreadLocalRandom;
 public class NetrunCommand extends CommandBase {
 
     private final NeonEchoState state;
-    private final OptionalArg<String> inputArg;
+    private final OptionalArg<String> tierArg;
+    private final OptionalArg<String> riskArg;
 
     public NetrunCommand(NeonEchoState state) {
         super("netrun", "Runs a NeonEcho netrun sequence.");
         this.setPermissionGroup(GameMode.Adventure);
         this.state = state;
-        this.inputArg = this.withOptionalArg("codeOrTier", "Tier name or access code", ArgTypes.STRING);
+        this.tierArg = this.withOptionalArg("tierOrCode", "Tier name or access code", ArgTypes.STRING);
+        this.riskArg = this.withOptionalArg("risk", "Risk profile", ArgTypes.STRING);
     }
 
     @Override
@@ -40,7 +42,8 @@ public class NetrunCommand extends CommandBase {
         UUID playerId = ref.getUuid();
         state.recordPlayerName(playerId, ref.getUsername());
 
-        String input = ctx.provided(inputArg) ? ctx.get(inputArg) : null;
+        String input = ctx.provided(tierArg) ? ctx.get(tierArg) : null;
+        String riskInput = ctx.provided(riskArg) ? ctx.get(riskArg) : null;
         NeonEchoState.NetrunSession active = state.getActiveSession(playerId);
         long now = System.currentTimeMillis();
 
@@ -55,64 +58,109 @@ public class NetrunCommand extends CommandBase {
             return;
         }
 
-        if (input != null && isTierName(input)) {
-            NeonEchoState.NetrunTier tier = state.resolveNetrunTier(input);
-            startSession(ctx, playerId, tier, now);
-            return;
-        }
-
-        if (input != null) {
-            ctx.sendMessage(Message.raw(state.formatMessage("No active netrun. Start with /netrun or /netrun <tier>.")));
-            sendTierList(ctx);
-            return;
-        }
-
         if (active != null) {
             long secondsLeft = Math.max(0L, (active.getExpiresAt() - now) / 1000L);
             Map<String, String> tokens = new HashMap<>();
             tokens.put("code", active.getCode());
             tokens.put("seconds", Long.toString(secondsLeft));
             tokens.put("tier", active.getTier().name());
+            tokens.put("stage", Integer.toString(active.getStage()));
+            tokens.put("stages", Integer.toString(active.getStages()));
+            tokens.put("risk", active.getRisk().name());
             sendLines(ctx, state.getNetrunHintLines(), tokens);
             return;
         }
 
-        NeonEchoState.NetrunTier tier = state.resolveNetrunTier(null);
-        startSession(ctx, playerId, tier, now);
+        String tierName = null;
+        String riskName = riskInput;
+        if (input != null) {
+            if (isTierName(input)) {
+                tierName = input;
+            }
+            else if (isRiskName(input)) {
+                riskName = input;
+            }
+            else {
+                ctx.sendMessage(Message.raw(state.formatMessage("Unknown tier or risk: " + input + ".")));
+                sendTierList(ctx);
+                sendRiskList(ctx);
+                return;
+            }
+        }
+        if (riskName != null && !riskName.isBlank() && !isRiskName(riskName)) {
+            ctx.sendMessage(Message.raw(state.formatMessage("Unknown risk profile: " + riskName + ".")));
+            sendRiskList(ctx);
+            return;
+        }
+
+        NeonEchoState.NetrunTier tier = state.resolveNetrunTier(tierName);
+        NeonEchoState.NetrunRisk risk = state.resolveNetrunRisk(riskName);
+        startSession(ctx, playerId, tier, risk, now);
     }
 
-    private void startSession(CommandContext ctx, UUID playerId, NeonEchoState.NetrunTier tier, long now) {
-        String code = state.generateCode(tier.codeLength());
-        long expiresAt = now + tier.timeoutSeconds() * 1000L;
-        state.startSession(playerId, code, expiresAt, tier.attempts(), tier);
+    private void startSession(CommandContext ctx, UUID playerId, NeonEchoState.NetrunTier tier,
+                              NeonEchoState.NetrunRisk risk, long now) {
+        NeonEchoState.NetrunSession session = state.createSession(playerId, tier, risk, 1, 0, now);
+        state.startSession(playerId, session);
 
         Map<String, String> tokens = new HashMap<>();
-        tokens.put("code", code);
-        tokens.put("seconds", Integer.toString(tier.timeoutSeconds()));
+        tokens.put("code", session.getCode());
+        tokens.put("seconds", Integer.toString(session.getStageTimeoutSeconds()));
         tokens.put("tier", tier.name());
+        tokens.put("stage", Integer.toString(session.getStage()));
+        tokens.put("stages", Integer.toString(session.getStages()));
+        tokens.put("risk", risk.name());
         sendLines(ctx, state.getNetrunStartLines(), tokens);
 
         int latency = ThreadLocalRandom.current().nextInt(12, 77);
         int trace = ThreadLocalRandom.current().nextInt(1, 100);
         ctx.sendMessage(Message.raw(state.formatMessage("Trace level " + trace + "%. Latency " + latency + "ms.")));
+        ctx.sendMessage(Message.raw(state.formatMessage("Risk profile: " + risk.name() + ".")));
     }
 
     private void handleAttempt(CommandContext ctx, UUID playerId, String input, NeonEchoState.NetrunSession session) {
         String attempt = input.toUpperCase(Locale.ROOT);
         NeonEchoState.NetrunTier tier = session.getTier();
+        NeonEchoState.NetrunRisk risk = session.getRisk();
+        long now = System.currentTimeMillis();
 
         if (session.getCode().equalsIgnoreCase(attempt)) {
+            if (session.getStage() < session.getStages()) {
+                NeonEchoState.NetrunSession next = state.advanceSession(session, now);
+                if (next == null) {
+                    state.clearSession(playerId);
+                }
+                else {
+                    state.startSession(playerId, next);
+                    ctx.sendMessage(Message.raw(state.formatMessage("Stage " + session.getStage() + "/"
+                            + session.getStages() + " cleared. Next code: " + next.getCode() + ".")));
+                    ctx.sendMessage(Message.raw(state.formatMessage("Stage " + next.getStage() + " timer: "
+                            + next.getStageTimeoutSeconds() + "s.")));
+                }
+                return;
+            }
+
             state.clearSession(playerId);
-            state.startCooldown(playerId, tier.cooldownSeconds());
+            int cooldown = session.getTotalCooldownSeconds();
+            state.startCooldown(playerId, cooldown);
             int streak = state.recordNetrunWin(playerId);
-            state.addCred(playerId, tier.reward());
+            int reward = session.getTotalReward();
+            int bonus = state.consumeEventBonus(playerId);
+            if (bonus > 0) {
+                reward += bonus;
+            }
+            state.addCred(playerId, reward);
 
             Map<String, String> tokens = new HashMap<>();
-            tokens.put("cred", Integer.toString(tier.reward()));
-            tokens.put("cooldown", Integer.toString(tier.cooldownSeconds()));
+            tokens.put("cred", Integer.toString(reward));
+            tokens.put("cooldown", Integer.toString(cooldown));
             tokens.put("tier", tier.name());
             tokens.put("streak", Integer.toString(streak));
+            tokens.put("risk", risk.name());
             sendLines(ctx, state.getNetrunSuccessLines(), tokens);
+            if (bonus > 0) {
+                ctx.sendMessage(Message.raw(state.formatMessage("Event bonus: +" + bonus + " cred.")));
+            }
             return;
         }
 
@@ -123,19 +171,22 @@ public class NetrunCommand extends CommandBase {
         }
 
         state.clearSession(playerId);
-        state.startCooldown(playerId, tier.cooldownSeconds());
+        int cooldown = session.getTotalCooldownSeconds();
+        state.startCooldown(playerId, cooldown);
         state.recordNetrunFail(playerId);
 
-        if (tier.failPenalty() > 0) {
-            state.addCred(playerId, -tier.failPenalty());
+        int penalty = session.getFailPenalty();
+        if (penalty > 0) {
+            state.addCred(playerId, -penalty);
         }
 
         Map<String, String> tokens = new HashMap<>();
-        tokens.put("cooldown", Integer.toString(tier.cooldownSeconds()));
+        tokens.put("cooldown", Integer.toString(cooldown));
         tokens.put("tier", tier.name());
+        tokens.put("risk", risk.name());
         sendLines(ctx, state.getNetrunFailLines(), tokens);
-        if (tier.failPenalty() > 0) {
-            ctx.sendMessage(Message.raw(state.formatMessage("Street Cred lost: -" + tier.failPenalty() + ".")));
+        if (penalty > 0) {
+            ctx.sendMessage(Message.raw(state.formatMessage("Street Cred lost: -" + penalty + ".")));
         }
     }
 
@@ -153,9 +204,26 @@ public class NetrunCommand extends CommandBase {
         ctx.sendMessage(Message.raw(state.formatMessage("Available tiers: " + String.join(", ", tiers) + ".")));
     }
 
+    private void sendRiskList(CommandContext ctx) {
+        List<String> risks = state.getNetrunRiskNames();
+        if (risks.isEmpty()) {
+            return;
+        }
+        ctx.sendMessage(Message.raw(state.formatMessage("Risk profiles: " + String.join(", ", risks) + ".")));
+    }
+
     private boolean isTierName(String input) {
         for (String tier : state.getNetrunTierNames()) {
             if (tier.equalsIgnoreCase(input)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isRiskName(String input) {
+        for (String risk : state.getNetrunRiskNames()) {
+            if (risk.equalsIgnoreCase(input)) {
                 return true;
             }
         }
