@@ -1,89 +1,79 @@
 # NEON ECHO // HYTALE MOD
-Cyberpunk starter mod with Street Cred, netrun challenges, and a themed config. Built to be hacked on.
+NeonEcho turns your world into a low‑noise cyberpunk playground: netruns, Street Cred, neon props, and a vibe you can keep expanding.
 
 ---
 
-## SIGNALS
+## WHAT IT FEELS LIKE
+- Netrun challenges with tiers, cooldowns, and streaks.
+- Street Cred that grows with play and unlocks titles.
+- Daily contracts that hand out bonus cred.
+- Cyberpunk props: glowing panels, holo lamps, and danger signs.
 
-- Neon welcome on join.
-- `/netrun` mini-game with tiers, cooldowns, streaks, and rewards.
-- Street Cred system (`/cred`, `/credtop`, `/credset`).
-- Runner profiles + titles (`/neonprofile`), netrun stats (`/netrunstats`).
-- Daily contracts (`/contracts`, `/claim`).
-- `/neonhelp`, `/neonstatus`, `/neonmute`, `/neonreload` helpers.
+## QUICK START (SINGLEPLAYER)
+1. Drop the jar into your Mods folder.
+2. Restart Hytale (mods load on startup).
+3. Join your world and run `/neonhelp`.
+
+macOS Mods path:
+```
+~/Library/Application Support/HytaleF2P/release/package/game/latest/Client/UserData/Mods
+```
+
+## COMMANDS
+- `/netrun` or `/netrun <tier>`: start or complete a netrun.
+- `/netrunstats`: wins, fails, streaks.
+- `/cred`: your Street Cred.
+- `/credtop`: leaderboard.
+- `/credset`: admin cred override.
+- `/neonprofile`: full runner profile.
+- `/contracts`: daily objectives.
+- `/claim`: collect daily reward.
+- `/neonstatus`: plugin status.
+- `/neonmute`: toggle join message.
+- `/neonreload`: reload config.
+
+## CYBERPUNK ASSETS
+All assets are in the NeonEcho asset pack, so they show up in Creative search.
+- `NeonEcho_Datachip`: craftable ingredient (Prisma + cyan crystal).
+- `NeonEcho_NeonPanel`: glowing cyan panel block.
+- `NeonEcho_HoloLamp`: hologlow lamp with particles.
+- `NeonEcho_DangerSign`: neon wall sign.
 
 ## STREET CRED
-
-- Earn cred for chatting and for time online (tunable in config).
-- Netrun success grants bonus cred; failures can deduct cred.
+- Earned from chat + time online (configurable).
+- Netrun success grants bonus cred; failure can subtract.
+- Titles unlock at cred thresholds and show on join.
 - Data persists to `data.json` in the plugin data directory.
 
 ## NETRUN TIERS
-
-- Default tiers: `easy`, `medium`, `hard` (configurable).
-- Use `/netrun <tier>` to start a specific tier.
-- Streaks tracked across sessions; view with `/netrunstats`.
-
-## PROFILES
-
-- Titles unlocked at cred milestones (edit in config).
-- Join message shows your current title and cred.
-- `/neonprofile` shows your stats and contract status.
+- Defaults: `easy`, `medium`, `hard`.
+- Each tier has its own code length, timer, attempts, reward, and cooldown.
+- Streaks tracked across sessions.
 
 ## DAILY CONTRACTS
-
-- Daily objectives award bonus cred when claimed.
-- `/contracts` shows objectives; `/claim` collects rewards.
-- Configure objectives and reward in `config.json`.
-
-## CYBERPUNK ASSETS
-
-- `NeonEcho_Datachip` ingredient (crafts from Prisma + cyan crystal).
-- `NeonEcho_NeonPanel` glowing block (cyan crystal panel).
-- `NeonEcho_HoloLamp` hologlow lamp with particles.
-- `NeonEcho_DangerSign` neon wall sign.
+- Daily objectives refresh each day.
+- `/contracts` shows progress, `/claim` grants reward.
+- Objectives and reward are configurable.
 
 ## THEMES + CONFIG
-
-- Theme packs: `neon`, `chrome`, `ghost` (set `theme` in `config.json`).
+- Theme packs: `neon`, `chrome`, `ghost`.
 - Override message lines and prefix in `config.json`.
 - Use `/neonreload` after edits.
 
-## RUNTIME
-
-- Hytale installed via the launcher.
-- Java 25 for building.
-
 ## BUILD
-
 ```sh
 ./gradlew build
 ```
 
 Output:
-
 ```
 build/libs/NeonEcho-0.0.3.jar
 ```
 
-## INSTALL (SINGLEPLAYER)
-
-1. Drop the jar into your Mods folder.
-2. Restart Hytale (mods load on startup).
-3. Join your world and run `/netrun`.
-
-macOS Mods path:
-
-```
-~/Library/Application Support/HytaleF2P/release/package/game/latest/Client/UserData/Mods
-```
-
 ## DEV NOTES
-
 - If Hytale lives elsewhere, set `hytale_home` in `gradle.properties` or pass `-Phytale_home=...` to Gradle.
 - Entrypoint: `com.alexleo.neonecho.NeonEchoPlugin`
-- Config + data live in the plugin data directory created by Hytale (look for `config.json` and `data.json`).
+- Config + data live in the plugin data directory created by Hytale.
 
 ## LICENSE
-
 MIT (swap if you want a different one).
