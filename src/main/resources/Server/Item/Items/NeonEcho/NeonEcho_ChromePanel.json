@@ -2,7 +2,7 @@
   "TranslationProperties": {
     "Name": "server.items.NeonEcho_ChromePanel.name"
   },
-  "Icon": "Icons/ItemsGenerated/Soil_Clay_Smooth_Grey.png",
+  "Icon": "Icons/ItemsGenerated/NeonEcho_ChromePanel.png",
   "Categories": [
     "Blocks.Deco"
   ],
@@ -21,8 +21,8 @@
     "BlockParticleSetId": "Metal",
     "Textures": [
       {
-        "Sides": "BlockTextures/Clay_Smooth_Grey.png",
-        "UpDown": "BlockTextures/Clay_Smooth_Black.png",
+        "Sides": "BlockTextures/NeonEcho/ChromePanel.png",
+        "UpDown": "BlockTextures/NeonEcho/ChromePanel_Top.png",
         "Weight": 1
       }
     ],

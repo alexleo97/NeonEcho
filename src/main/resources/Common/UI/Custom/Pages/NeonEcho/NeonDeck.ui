@@ -1,0 +1,278 @@
+$C = "../../Common.ui";
+
+@SectionBackground = PatchStyle(TexturePath: "../../Common/ContainerPanelPatch.png", Border: 4);
+
+$C.@PageOverlay {
+  LayoutMode: Middle;
+
+  $C.@DecoratedContainer {
+    Anchor: (Width: 980, Height: 700);
+
+    #Title {
+      Group {
+        LayoutMode: Left;
+
+        $C.@Title {
+          @Text = "NEON DECK";
+          @Alignment = Start;
+        }
+
+        Label {
+          Text: "Ops Console";
+          Style: (FontSize: 13, TextColor: #7aa7c0, RenderUppercase: true, VerticalAlignment: Center);
+          Anchor: (Left: 8);
+        }
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+
+      Group #HeaderStats {
+        LayoutMode: Left;
+        Anchor: (Bottom: 10);
+
+        Label {
+          Text: "Cred";
+          Style: (...$C.@DefaultLabelStyle, RenderUppercase: true, RenderBold: true);
+          Anchor: (Right: 6);
+        }
+
+        Label #CredValue {
+          Text: "0";
+          Style: (...$C.@DefaultLabelStyle, TextColor: #1df5ff, RenderBold: true);
+          Anchor: (Right: 20);
+        }
+
+        Label {
+          Text: "Runner";
+          Style: (...$C.@DefaultLabelStyle, RenderUppercase: true, RenderBold: true);
+          Anchor: (Right: 6);
+        }
+
+        Label #TitleValue {
+          Text: "Rookie";
+          Style: (...$C.@DefaultLabelStyle, TextColor: #ff3fb3, RenderBold: true);
+        }
+      }
+
+      Group #Tabs {
+        LayoutMode: Left;
+        Anchor: (Bottom: 12);
+
+        Group #TabNetrunGroup {
+          LayoutMode: Top;
+          Anchor: (Width: 200, Right: 12);
+
+          $C.@SecondaryTextButton #TabNetrun {
+            Anchor: (Height: 32);
+            Text: "NETRUN";
+          }
+
+          Group #TabNetrunMarker {
+            Anchor: (Width: 120, Height: 2, Left: 20, Top: 4);
+            Background: #1df5ff;
+            Visible: true;
+          }
+        }
+
+        Group #TabPerksGroup {
+          LayoutMode: Top;
+          Anchor: (Width: 200, Right: 12);
+
+          $C.@SecondaryTextButton #TabPerks {
+            Anchor: (Height: 32);
+            Text: "PERKS";
+          }
+
+          Group #TabPerksMarker {
+            Anchor: (Width: 120, Height: 2, Left: 20, Top: 4);
+            Background: #ff3fb3;
+            Visible: false;
+          }
+        }
+
+        Group #TabAlertsGroup {
+          LayoutMode: Top;
+          Anchor: (Width: 200);
+
+          $C.@SecondaryTextButton #TabAlerts {
+            Anchor: (Height: 32);
+            Text: "ALERTS";
+          }
+
+          Group #TabAlertsMarker {
+            Anchor: (Width: 120, Height: 2, Left: 20, Top: 4);
+            Background: #7cff6b;
+            Visible: false;
+          }
+        }
+      }
+
+      Group #NetrunPanel {
+        LayoutMode: Top;
+        FlexWeight: 1;
+        Padding: (Full: 14);
+        Background: @SectionBackground;
+
+        Label {
+          Text: "Netrun Console";
+          Style: (FontSize: 16, RenderUppercase: true, RenderBold: true, TextColor: #b4c8c9);
+          Anchor: (Bottom: 10);
+        }
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Bottom: 10);
+
+          Label {
+            Text: "Tier";
+            Style: (...$C.@DefaultLabelStyle, RenderUppercase: true);
+            Anchor: (Width: 80, Right: 6);
+          }
+
+          $C.@TextField #TierInput {
+            @Anchor = (Width: 200, Right: 20);
+            PlaceholderText: "easy";
+          }
+
+          Label {
+            Text: "Risk";
+            Style: (...$C.@DefaultLabelStyle, RenderUppercase: true);
+            Anchor: (Width: 80, Right: 6);
+          }
+
+          $C.@TextField #RiskInput {
+            @Anchor = (Width: 200);
+            PlaceholderText: "normal";
+          }
+        }
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Bottom: 12);
+
+          Label {
+            Text: "Code";
+            Style: (...$C.@DefaultLabelStyle, RenderUppercase: true);
+            Anchor: (Width: 80, Right: 6);
+          }
+
+          $C.@TextField #CodeInput {
+            @Anchor = (Width: 260, Right: 20);
+            PlaceholderText: "enter access code";
+          }
+
+          $C.@TextButton #StartRun {
+            @Anchor = (Width: 150, Right: 10);
+            Text: "Start";
+          }
+
+          $C.@SecondaryTextButton #SubmitCode {
+            @Anchor = (Width: 150, Right: 10);
+            Text: "Submit";
+          }
+
+          $C.@SecondaryTextButton #RefreshNetrun {
+            @Anchor = (Width: 150);
+            Text: "Refresh";
+          }
+        }
+
+        Label #NetrunMeta {
+          Text: "";
+          Style: (FontSize: 12, TextColor: #7aa7c0, Wrap: true);
+          Anchor: (Bottom: 12);
+        }
+
+        Label #NetrunStatus {
+          Text: "";
+          Style: (FontSize: 13, TextColor: #ffffff(0.9), Wrap: true);
+        }
+      }
+
+      Group #PerksPanel {
+        LayoutMode: Top;
+        FlexWeight: 1;
+        Padding: (Full: 14);
+        Background: @SectionBackground;
+        Visible: false;
+
+        Label {
+          Text: "Perk Vendor";
+          Style: (FontSize: 16, RenderUppercase: true, RenderBold: true, TextColor: #b4c8c9);
+          Anchor: (Bottom: 10);
+        }
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Bottom: 8);
+
+          Label #PerkSlots {
+            Text: "Slots: 0/0";
+            Style: (FontSize: 12, TextColor: #7aa7c0);
+            Anchor: (Right: 20);
+          }
+
+          Label #PerkActive {
+            Text: "Active: none";
+            Style: (FontSize: 12, TextColor: #7aa7c0);
+          }
+        }
+
+        Group #PerkList {
+          LayoutMode: TopScrolling;
+          ScrollbarStyle: $C.@DefaultScrollbarStyle;
+          FlexWeight: 1;
+          Anchor: (Bottom: 10);
+        }
+
+        Label #PerkStatus {
+          Text: "";
+          Style: (FontSize: 12, TextColor: #ffffff(0.85), Wrap: true);
+        }
+      }
+
+      Group #AlertsPanel {
+        LayoutMode: Top;
+        FlexWeight: 1;
+        Padding: (Full: 14);
+        Background: @SectionBackground;
+        Visible: false;
+
+        Label {
+          Text: "Neon Alerts";
+          Style: (FontSize: 16, RenderUppercase: true, RenderBold: true, TextColor: #b4c8c9);
+          Anchor: (Bottom: 10);
+        }
+
+        Label #AlertStatus {
+          Text: "";
+          Style: (FontSize: 13, TextColor: #ffffff(0.9), Wrap: true);
+          Anchor: (Bottom: 8);
+        }
+
+        Label #AlertMeta {
+          Text: "";
+          Style: (FontSize: 12, TextColor: #7aa7c0, Wrap: true);
+          Anchor: (Bottom: 10);
+        }
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Bottom: 10);
+
+          $C.@TextButton #AlertClaim {
+            @Anchor = (Width: 180, Right: 10);
+            Text: "Claim Drop";
+          }
+
+          $C.@SecondaryTextButton #AlertRefresh {
+            @Anchor = (Width: 180);
+            Text: "Refresh";
+          }
+        }
+      }
+    }
+  }
+}

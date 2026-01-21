@@ -2,7 +2,7 @@
   "TranslationProperties": {
     "Name": "server.items.NeonEcho_NeonPanel.name"
   },
-  "Icon": "Icons/ItemsGenerated/Rock_Crystal_Cyan.png",
+  "Icon": "Icons/ItemsGenerated/NeonEcho_NeonPanel.png",
   "Categories": [
     "Blocks.Deco"
   ],
@@ -21,8 +21,8 @@
     "BlockParticleSetId": "Crystal",
     "Textures": [
       {
-        "Sides": "BlockTextures/Rock_Crystal_Cyan.png",
-        "UpDown": "BlockTextures/Rock_Crystal_Cyan_Top.png",
+        "Sides": "BlockTextures/NeonEcho/NeonPanel.png",
+        "UpDown": "BlockTextures/NeonEcho/NeonPanel_Top.png",
         "Weight": 1
       }
     ],

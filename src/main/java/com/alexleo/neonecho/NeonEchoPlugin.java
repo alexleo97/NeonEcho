@@ -59,6 +59,7 @@ public class NeonEchoPlugin extends JavaPlugin {
         this.getCommandRegistry().registerCommand(new NeonPerksCommand(state));
         this.getCommandRegistry().registerCommand(new NeonAlertCommand(state));
         this.getCommandRegistry().registerCommand(new NeonDropCommand(state));
+        this.getCommandRegistry().registerCommand(new NeonDeckCommand(state));
         this.getCommandRegistry().registerCommand(new NeonReloadCommand(state));
         this.getEventRegistry().register(PlayerConnectEvent.class, event -> {
             state.markOnline(event.getPlayerRef(), true);

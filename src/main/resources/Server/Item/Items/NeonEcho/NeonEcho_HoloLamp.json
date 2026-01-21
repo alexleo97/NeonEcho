@@ -6,7 +6,7 @@
   "Categories": [
     "Furniture.Lighting"
   ],
-  "Icon": "Icons/ItemsGenerated/Furniture_Royal_Magic_Potion_Glow.png",
+  "Icon": "Icons/ItemsGenerated/NeonEcho_HoloLamp.png",
   "IconProperties": {
     "Scale": 0.5,
     "Rotation": [
@@ -56,7 +56,7 @@
     "CustomModelScale": 0.7,
     "CustomModelTexture": [
       {
-        "Texture": "Blocks/Decorative_Sets/Royal_Magic/Potion_Glow_Texture.png",
+        "Texture": "Blocks/NeonEcho/HoloLamp_Texture.png",
         "Weight": 1
       }
     ],

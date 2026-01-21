@@ -2,7 +2,7 @@
   "TranslationProperties": {
     "Name": "server.items.NeonEcho_CircuitTile.name"
   },
-  "Icon": "Icons/ItemsGenerated/Soil_Clay_Smooth_White.png",
+  "Icon": "Icons/ItemsGenerated/NeonEcho_CircuitTile.png",
   "Categories": [
     "Blocks.Deco"
   ],
@@ -21,8 +21,8 @@
     "BlockParticleSetId": "Stone",
     "Textures": [
       {
-        "Sides": "BlockTextures/WhiteTiles.png",
-        "UpDown": "BlockTextures/WhiteTiles.png",
+        "Sides": "BlockTextures/NeonEcho/CircuitTile.png",
+        "UpDown": "BlockTextures/NeonEcho/CircuitTile.png",
         "Weight": 1
       }
     ],

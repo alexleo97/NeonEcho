@@ -2,7 +2,7 @@
   <img src="assets/neonecho-banner.png" alt="NeonEcho banner" width="720">
 </p>
 <p align="center">
-  <a href="https://github.com/alexleo97/NeonEcho"><img alt="Version" src="https://img.shields.io/badge/version-0.0.5-00e5ff?labelColor=0b0b16&color=00e5ff"></a>
+  <a href="https://github.com/alexleo97/NeonEcho"><img alt="Version" src="https://img.shields.io/badge/version-0.0.6-00e5ff?labelColor=0b0b16&color=00e5ff"></a>
   <a href="https://github.com/alexleo97/NeonEcho/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/alexleo97/NeonEcho?style=flat&color=ff3fb3&labelColor=0b0b16"></a>
   <a href="https://github.com/alexleo97/NeonEcho/issues"><img alt="Issues" src="https://img.shields.io/github/issues/alexleo97/NeonEcho?style=flat&color=7cff6b&labelColor=0b0b16"></a>
   <a href="https://github.com/alexleo97/NeonEcho/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/alexleo97/NeonEcho?style=flat&color=c8ff00&labelColor=0b0b16"></a>
@@ -28,6 +28,7 @@ NeonEcho turns your world into a low-noise cyberpunk playground: netruns, Street
 - Street Cred that grows with play and unlocks titles.
 - Daily contracts that hand out bonus cred.
 - Perk vendor loadouts that alter netrun rewards and cooldowns.
+- NeonDeck UI for netruns, perks, and alerts.
 - Cyberpunk props: chrome panels, circuit tiles, neon glass, and street lamps.
 - Neon signage: billboards and arrow signs for wayfinding.
 - Ambient beacons that add glow + subtle zone audio.
@@ -53,6 +54,7 @@ macOS Mods path:
 - `/neonperks`: perk loadout + vendor shop.
 - `/neonalert`: active neon events.
 - `/neondrop`: claim event drops.
+- `/neondeck`: open the NeonEcho deck UI.
 - `/contracts`: daily objectives.
 - `/claim`: collect daily reward.
 - `/neonstatus`: plugin status.
@@ -114,6 +116,7 @@ All assets are in the NeonEcho asset pack, so they show up in Creative search.
 - [x] Custom cyberpunk texture set (panels, decals, signage).
 - [x] Prefab-ready neon district props and lighting kit.
 - [x] Ambient soundscape + particle pass for neon zones.
+- [x] NeonDeck UI for netruns, perks, and alerts.
 
 ## BUILD 🛠️
 ```sh
@@ -122,7 +125,7 @@ All assets are in the NeonEcho asset pack, so they show up in Creative search.
 
 Output:
 ```
-build/libs/NeonEcho-0.0.5.jar
+build/libs/NeonEcho-0.0.6.jar
 ```
 
 ## DEV NOTES 🧪

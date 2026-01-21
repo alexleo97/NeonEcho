@@ -28,8 +28,8 @@
     "OutputQuantity": 2
   },
   "Model": "Resources/Materials/Ingot.blockymodel",
-  "Texture": "Resources/Materials/Ingot_Textures/Prisma.png",
-  "Icon": "Icons/ItemsGenerated/Ingredient_Bar_Prisma.png",
+  "Texture": "Resources/Materials/Ingot_Textures/NeonEcho_Datachip.png",
+  "Icon": "Icons/ItemsGenerated/NeonEcho_Datachip.png",
   "PlayerAnimationsId": "Item",
   "Tags": {
     "Type": [

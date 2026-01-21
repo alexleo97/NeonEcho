@@ -6,7 +6,7 @@
   "Categories": [
     "Furniture.Lighting"
   ],
-  "Icon": "Icons/ItemsGenerated/Furniture_Temple_Scarak_Lamp.png",
+  "Icon": "Icons/ItemsGenerated/NeonEcho_NeonStreetLamp.png",
   "IconProperties": {
     "Scale": 0.4,
     "Translation": [
@@ -55,7 +55,7 @@
     "CustomModel": "Blocks/Decorative_Sets/Scarak_Temple/Lamp.blockymodel",
     "CustomModelTexture": [
       {
-        "Texture": "Blocks/Decorative_Sets/Scarak_Temple/Lamp_Texture.png",
+        "Texture": "Blocks/NeonEcho/StreetLamp_Texture.png",
         "Weight": 1
       }
     ],

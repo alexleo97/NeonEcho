@@ -31,6 +31,7 @@ public class NeonHelpCommand extends CommandBase {
         ctx.sendMessage(Message.raw(state.formatMessage("/neonperks - perk loadout + vendor")));
         ctx.sendMessage(Message.raw(state.formatMessage("/neonalert - active neon events")));
         ctx.sendMessage(Message.raw(state.formatMessage("/neondrop - claim event drops")));
+        ctx.sendMessage(Message.raw(state.formatMessage("/neondeck - open the NeonEcho deck UI")));
         ctx.sendMessage(Message.raw(state.formatMessage("/contracts - daily objectives")));
         ctx.sendMessage(Message.raw(state.formatMessage("/claim - claim daily reward")));
         ctx.sendMessage(Message.raw(state.formatMessage("/neonreload - reload config (admin)")));

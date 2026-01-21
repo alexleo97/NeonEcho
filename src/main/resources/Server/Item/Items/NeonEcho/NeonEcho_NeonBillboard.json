@@ -6,7 +6,7 @@
   "Categories": [
     "Furniture.Signs"
   ],
-  "Icon": "Icons/ItemsGenerated/Prototype_Human_Ruins_Sign_Shield.png",
+  "Icon": "Icons/ItemsGenerated/NeonEcho_NeonBillboard.png",
   "IconProperties": {
     "Scale": 0.58823,
     "Rotation": [
@@ -50,7 +50,7 @@
     "CustomModel": "Blocks/Decorative_Sets/Prototype_Signs/Prototype_Human_Ruins_Sign_Shield.blockymodel",
     "CustomModelTexture": [
       {
-        "Texture": "Blocks/Decorative_Sets/Prototype_Signs/Prototype_Human_Ruins_Texture.png",
+        "Texture": "Blocks/NeonEcho/PrototypeSign_Texture.png",
         "Weight": 1
       }
     ],

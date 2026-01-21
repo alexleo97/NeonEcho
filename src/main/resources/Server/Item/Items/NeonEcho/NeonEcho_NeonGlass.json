@@ -2,7 +2,7 @@
   "TranslationProperties": {
     "Name": "server.items.NeonEcho_NeonGlass.name"
   },
-  "Icon": "Icons/ItemsGenerated/Rock_Crystal_Purple.png",
+  "Icon": "Icons/ItemsGenerated/NeonEcho_NeonGlass.png",
   "Categories": [
     "Blocks.Deco"
   ],
@@ -21,8 +21,8 @@
     "BlockParticleSetId": "Crystal",
     "Textures": [
       {
-        "Sides": "BlockTextures/Rock_Crystal_Purple.png",
-        "UpDown": "BlockTextures/Rock_Crystal_Purple_Top.png",
+        "Sides": "BlockTextures/NeonEcho/NeonGlass.png",
+        "UpDown": "BlockTextures/NeonEcho/NeonGlass_Top.png",
         "Weight": 1
       }
     ],

@@ -6,7 +6,7 @@
   "Categories": [
     "Furniture.Signs"
   ],
-  "Icon": "Icons/ItemsGenerated/Furniture_InConstruction_Sign.png",
+  "Icon": "Icons/ItemsGenerated/NeonEcho_DangerSign.png",
   "IconProperties": {
     "Rotation": [
       22.5,
@@ -49,7 +49,7 @@
     "CustomModel": "Blocks/Tinkering/Danger_Sign.blockymodel",
     "CustomModelTexture": [
       {
-        "Texture": "Blocks/Tinkering/Danger_Sign_Texture.png",
+        "Texture": "Blocks/NeonEcho/DangerSign_Texture.png",
         "Weight": 1
       }
     ],

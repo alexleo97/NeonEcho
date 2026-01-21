@@ -1,0 +1,35 @@
+$C = "../../Common.ui";
+
+Group {
+  Anchor: (Height: 74, Bottom: 8);
+  LayoutMode: Left;
+  Padding: (Full: 8);
+  Background: #101522;
+
+  Group {
+    LayoutMode: Top;
+    FlexWeight: 1;
+    Anchor: (Right: 12);
+
+    Label #PerkName {
+      Text: "Perk";
+      Style: (FontSize: 14, RenderUppercase: true, RenderBold: true, TextColor: #c9d7e0);
+      Anchor: (Bottom: 4);
+    }
+
+    Label #PerkDetail {
+      Text: "";
+      Style: (FontSize: 12, TextColor: #9bb0c2, Wrap: true);
+    }
+  }
+
+  $C.@SecondaryTextButton #PerkBuy {
+    Anchor: (Width: 130, Height: 30, Right: 10);
+    Text: "Buy";
+  }
+
+  $C.@SecondaryTextButton #PerkToggle {
+    Anchor: (Width: 130, Height: 30);
+    Text: "Equip";
+  }
+}
