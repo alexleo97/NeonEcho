@@ -21,8 +21,9 @@ public class NeonStatusCommand extends CommandBase {
     @Override
     protected void executeSync(@Nonnull CommandContext ctx) {
         Duration uptime = state.getUptime();
-        ctx.sendMessage(Message.raw("[NeonEcho] Core v" + state.getVersion() + " online."));
-        ctx.sendMessage(Message.raw("[NeonEcho] Uptime " + formatDuration(uptime) + "."));
+        ctx.sendMessage(Message.raw(state.formatMessage("Core v" + state.getVersion() + " online.")));
+        ctx.sendMessage(Message.raw(state.formatMessage("Theme " + state.getTheme().getName() + ".")));
+        ctx.sendMessage(Message.raw(state.formatMessage("Uptime " + formatDuration(uptime) + ".")));
     }
 
     private static String formatDuration(Duration duration) {

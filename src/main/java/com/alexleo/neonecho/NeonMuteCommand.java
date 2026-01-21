@@ -21,16 +21,16 @@ public class NeonMuteCommand extends CommandBase {
     @Override
     protected void executeSync(@Nonnull CommandContext ctx) {
         if (!ctx.isPlayer()) {
-            ctx.sendMessage(Message.raw("[NeonEcho] This command can only be used in-game."));
+            ctx.sendMessage(Message.raw(state.formatMessage("This command can only be used in-game.")));
             return;
         }
         Player player = ctx.senderAs(Player.class);
         boolean muted = state.toggleMuted(player.getPlayerRef().getUuid());
         if (muted) {
-            ctx.sendMessage(Message.raw("[NeonEcho] Welcome messages muted."));
+            ctx.sendMessage(Message.raw(state.formatMessage("Welcome messages muted.")));
         }
         else {
-            ctx.sendMessage(Message.raw("[NeonEcho] Welcome messages enabled."));
+            ctx.sendMessage(Message.raw(state.formatMessage("Welcome messages enabled.")));
         }
     }
 }

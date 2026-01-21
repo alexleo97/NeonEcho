@@ -1,8 +1,8 @@
 {
     "Group": "NeonEcho",
     "Name": "NeonEcho",
-    "Version": "0.0.2",
-    "Description": "Neon-themed welcome + netrun command.",
+    "Version": "0.0.3",
+    "Description": "NeonEcho cyberpunk mod: netruns, cred, and contracts.",
     "Authors": [
         {
             "Name": "alexleo"
