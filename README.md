@@ -1,7 +1,29 @@
 # NEON ECHO // HYTALE MOD
-NeonEcho turns your world into a low‑noise cyberpunk playground: netruns, Street Cred, neon props, and a vibe you can keep expanding.
+[![Version](https://img.shields.io/badge/version-0.0.3-00e5ff)](https://github.com/alexleo97/NeonEcho)
+[![Stars](https://img.shields.io/github/stars/alexleo97/NeonEcho?style=flat)](https://github.com/alexleo97/NeonEcho/stargazers)
+[![Issues](https://img.shields.io/github/issues/alexleo97/NeonEcho?style=flat)](https://github.com/alexleo97/NeonEcho/issues)
+[![License](https://img.shields.io/github/license/alexleo97/NeonEcho?style=flat)](https://github.com/alexleo97/NeonEcho/blob/main/LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/alexleo97/NeonEcho/main?style=flat)](https://github.com/alexleo97/NeonEcho/commits/main)
+
+```
+ _   _  ______  ____   _   _    ______  _____  _   _
+| \ | ||  ____|/ __ \ | \ | |  |  ____|/ ____|| \ | |
+|  \| || |__  | |  | ||  \| |  | |__  | |     |  \| |
+| . ` ||  __| | |  | || . ` |  |  __| | |     | . ` |
+| |\  || |____| |__| || |\  |  | |____| |____ | |\  |
+|_| \_||______|\____/ |_| \_|  |______|\_____||_| \_|
+```
+
+NeonEcho turns your world into a low-noise cyberpunk playground: netruns, Street Cred, neon props, and a vibe you can keep expanding.
 
 ---
+
+## FEATURE CARDS
+| NETRUNS | STREET CRED |
+| --- | --- |
+| Tiered hacks, cooldowns, streaks, and payouts. | Earned by play, tied to ranks and titles. |
+| CYBER ASSETS | DAILY CONTRACTS |
+| Glowing panels, holo lamps, neon signage. | Daily objectives with claimable cred rewards. |
 
 ## WHAT IT FEELS LIKE
 - Netrun challenges with tiers, cooldowns, and streaks.
@@ -59,6 +81,15 @@ All assets are in the NeonEcho asset pack, so they show up in Creative search.
 - Theme packs: `neon`, `chrome`, `ghost`.
 - Override message lines and prefix in `config.json`.
 - Use `/neonreload` after edits.
+
+## ROADMAP
+- [x] Netrun tiers with streaks and cooldown tuning.
+- [x] Street Cred ranks and runner profiles.
+- [x] Daily contracts with claimable rewards.
+- [x] Neon asset pack with craftable props.
+- [ ] Custom cyberpunk texture set (panels, decals, signage).
+- [ ] Prefab-ready neon district props and lighting kit.
+- [ ] Ambient soundscape + particle pass for neon zones.
 
 ## BUILD
 ```sh
