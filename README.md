@@ -1,8 +1,5 @@
 <p align="center">
-  <img src="assets/neonecho-banner.svg" alt="NeonEcho banner" width="720">
-</p>
-<p align="center">
-  <img src="assets/neonecho-pulse.gif" alt="NeonEcho pulse" width="120">
+  <img src="assets/neonecho-banner.png" alt="NeonEcho banner" width="720">
 </p>
 <p align="center">
   <a href="https://github.com/alexleo97/NeonEcho"><img alt="Version" src="https://img.shields.io/badge/version-0.0.3-00e5ff?labelColor=0b0b16&color=00e5ff"></a>
