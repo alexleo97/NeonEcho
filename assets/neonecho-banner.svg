@@ -1,0 +1,37 @@
+<svg width="900" height="220" viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="50%" stop-color="#7cff6b"/>
+      <stop offset="100%" stop-color="#ff3fb3"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b0b16"/>
+      <stop offset="100%" stop-color="#06060c"/>
+    </linearGradient>
+    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="900" height="220" fill="url(#glow)"/>
+  <rect x="20" y="20" width="860" height="180" rx="16" fill="#0a0a14" stroke="#102030"/>
+  <g filter="url(#neonGlow)">
+    <text x="60" y="115" font-family="Arial Black, Arial, sans-serif" font-size="64" fill="url(#neon)">
+      NEON ECHO
+    </text>
+    <text x="62" y="152" font-family="Arial, sans-serif" font-size="18" fill="#8fe6ff">
+      Netruns • Street Cred • Cyberpunk Assets
+    </text>
+  </g>
+  <g opacity="0.6">
+    <circle cx="720" cy="78" r="4" fill="#00e5ff"/>
+    <circle cx="760" cy="92" r="3" fill="#7cff6b"/>
+    <circle cx="795" cy="70" r="2" fill="#ff3fb3"/>
+    <rect x="700" y="120" width="140" height="2" fill="#173040"/>
+    <rect x="700" y="134" width="110" height="2" fill="#173040"/>
+  </g>
+</svg>
